@@ -1,0 +1,188 @@
+﻿@model List<EmlakSistemi.Models.Kategoriler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/FirmaPanel/Views/Shared/_FirmaPanel.cshtml";
+}
+
+@section head{
+    
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Konut', 10],
+          ['İşyeri', 20],
+          ['Arsa', 5],
+          ['Turistik Tesis', 1],
+        ]);
+
+        // Set chart options
+        var options = {'title':'İlan Türleri',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+</script>
+<script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Daire', 10],
+          ['Villa', 20],
+          ['Müstakil Ev', 5],
+          ['Yazlık', 8],
+          ['Çiftlik Evi', 4],
+        ]);
+
+        // Set chart options
+        var options = {'title':'Emlak Tipleri',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_tip'));
+        chart.draw(data, options);
+      }
+</script>
+<script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Topping');
+        data.addColumn('number', 'Slices');
+        data.addRows([
+          ['Royal Emlak', 50],
+          ['Deneme Emlak', 40],
+          ['Falan Emlak', 30],
+          ['Filan Emlak', 20],
+          ['Zattiri Zart', 5],
+        ]);
+
+        // Set chart options
+        var options = {'title':'En Çok İlan Yayınlayan Firma',
+                       'width':400,
+                       'height':300};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_firma'));
+        chart.draw(data, options);
+      }
+</script>
+<script type='text/javascript'>
+     google.charts.load('current', {'packages': ['geochart']});
+     google.charts.setOnLoadCallback(drawMarkersMap);
+
+      function drawMarkersMap() {
+      var data = google.visualization.arrayToDataTable([
+        ['City',   'İlan Sayısı', 'Aktif İlan'],
+        ['Adana',      2761477,    1285.31],
+        ['Sivas',     1324110,    181.76],
+        ['Osmaniye',    959574,     117.27],
+        ['Ankara',     907563,     130.17],
+        ['Bursa',   655875,     158.9],
+        ['Malatya',     607906,     243.60],
+        ['Muğla',   380181,     140.7]
+      ]);
+
+      var options = {
+        region: 'TR',
+        displayMode: 'markers',
+        colorAxis: {colors: ['green', 'blue']}
+      };
+
+      var chart = new google.visualization.GeoChart(document.getElementById('chart_geo'));
+      chart.draw(data, options);
+    };
+</script>
+
+<script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+         ['Month', 'Royal Emlak', 'Deneme Emlak', 'Falan Emlak', 'Filan Emlak', 'Zattiri Emlak', 'Zart Emlak'],
+         ['Ocak',  165,      938,         522,             998,           450,      614.6],
+         ['Şubat',  135,      1120,        599,             1268,          288,      682],
+         ['Mart',  157,      1167,        587,             807,           397,      623],
+         ['Nisan',  139,      1110,        615,             968,           215,      609.4],
+         ['Mayıs',  136,      691,         629,             1026,          366,      569.6]
+      ]);
+
+    var options = {
+      title : 'Monthly Coffee Production by Country',
+      vAxis: {title: 'Cups'},
+      hAxis: {title: 'Month'},
+      seriesType: 'bars',
+      series: {5: {type: 'line'}}
+    };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_combo'));
+    chart.draw(data, options);
+  }
+    </script>
+
+
+
+
+    }
+
+<div class="row">
+    <div class="col-md-4">
+        <div id="chart_div"></div>
+    </div>
+    <div class="col-md-4">
+        <div id='chart_tip'></div>
+    </div>
+    <div class="col-md-4">
+        <div id="chart_firma"></div>
+
+    </div>
+    <div class="col-md-6">
+        <div id="chart_combo"></div>
+    </div>
+</div>

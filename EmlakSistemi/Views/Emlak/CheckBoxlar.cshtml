@@ -1,0 +1,9 @@
+﻿@model EmlakSistemi.ViewModel.Ilan.IlanListe
+@{
+    ViewBag.Title = "CheckBoxlar";
+    Layout = "~/Views/Shared/_DropLayout.cshtml";
+}
+
+
+
+@Html.Partial("Icozellikler", Model.Ilans.ToList())

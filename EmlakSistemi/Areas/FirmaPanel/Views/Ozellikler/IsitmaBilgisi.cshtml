@@ -1,0 +1,10 @@
+﻿@model EmlakSistemi.Models.IsıtmaBilgisi
+
+
+@using (Html.BeginForm("IsitmaBilgisi", "Ozellikler", FormMethod.Post))
+{
+    @Html.LabelFor(m=>m.Isıtma_AD,"Isıtma Adı Giriniz:",new { @class="form-control"})
+    @Html.TextBoxFor(m=>m.Isıtma_AD,new { @class = "form-control" })
+    <input type="submit" class="btn btn-success" name="name" value="Kaydet" />
+}
+

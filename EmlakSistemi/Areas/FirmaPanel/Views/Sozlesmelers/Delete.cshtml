@@ -1,0 +1,137 @@
+﻿@model EmlakSistemi.Models.Sozlesmeler
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/FirmaPanel/Views/Shared/_FirmaPanel.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Sozlesmeler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.aspnet_Users.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aspnet_Users.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SozlesmeTuru.Sozlesmetur_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SozlesmeTuru.Sozlesmetur_AD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_BASLIK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_BASLIK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_ACIKLAMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_ACIKLAMA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_BASTARIH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_BASTARIH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_BITTARIH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_BITTARIH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_KISIAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_KISIAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_KISISOYAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_KISISOYAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mahalle_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mahalle_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_KAPINO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_KAPINO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_PAFTANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_PAFTANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_ADANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_ADANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_PARSELNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_PARSELNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_NO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_NO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

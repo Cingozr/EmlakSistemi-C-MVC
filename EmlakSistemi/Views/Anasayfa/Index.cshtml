@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@Html.Partial("~/Views/Eksayfalar/Slider.cshtml")
+
+@Html.Partial("~/Views/Eksayfalar/SliderAlt.cshtml")
+
+@{
+    Html.RenderAction("AnaSayfaIlanlar", "EkSayfalar");
+}
+
+@Html.Partial("~/Views/Eksayfalar/PopulerAnasayfa.cshtml")
+
+
+
+
+
+
+
+
+
+
+
+
+
+

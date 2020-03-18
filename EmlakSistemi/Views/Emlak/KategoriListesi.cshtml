@@ -1,0 +1,77 @@
+﻿@model EmlakSistemi.ViewModel.KategoriModel
+
+@{
+    Layout = "~/Views/Shared/_DropLayout.cshtml";
+}
+
+
+
+
+<div class="row with-forms">
+    <!-- Status -->
+    <div class="col-md-4">
+        <h5><mark class="color">Kategori</mark> </h5>
+        @Html.DropDownListFor(m => m.Kategori_ID, Model.IlkKategori, new { @class = "form-control" })
+    </div>
+    <!-- Type -->
+    <div class="col-md-4">
+        <h5><mark class="color">Durum</mark></h5>
+        @Html.DropDownListFor(m => m.AltKategori_ID, Model.IkinciKategori, new { @class = "form-control" })
+    </div>
+    <div class="col-md-4">
+        <h5><mark class="color">Tip</mark></h5>
+        @Html.DropDownListFor(m => m.AnaKategori_ID, Model.AnaKategori, new { @class = "form-control" })
+    </div>
+</div>
+
+
+@section scripts
+{
+
+<script src="~/Scripts/jquery-2.2.0.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Kategori_ID").change(function () {
+                var KatID = $(this).val();
+                var IkinciKatList = $("#AltKategori_ID");
+
+                IkinciKatList.empty();
+
+
+                $.ajax({
+                    url: '/Emlak/AltKatList',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { 'id': KatID },
+                    success: function (data) {
+                        $.each(data, function (index, option) {
+                            IkinciKatList.append('<option value=' + option.Value + '> ' + option.Text + ' </option');
+                        });
+                    }
+                });
+                $("#AltKategori_ID").change(function () {
+                    var AltKatId = $(this).val();
+                    var Anakatliste = $("#AnaKategori_ID");
+                    Anakatliste.empty();
+                    $.ajax({
+                        url: '/Emlak/AnaKatList',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: { 'id': AltKatId },
+                        success: function (data) {
+                            $.each(data, function (index, option) {
+                                Anakatliste.append('<option value=' + option.Value + '> ' + option.Text + ' </option');
+                            });
+                        }
+                    });
+                });
+
+            });
+        });
+    </script>
+
+}
+
+
+

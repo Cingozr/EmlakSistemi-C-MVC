@@ -1,0 +1,50 @@
+﻿
+@{
+    ViewBag.Title = "ParolamiUnuttum";
+    Layout = "~/Views/Shared/_DropLayout.cshtml";
+}
+
+
+    <form action="@Url.Action("ParolamiUnuttum","Uye")" method="post" class="register">
+
+        <p class="form-row form-row-wide">
+            <label for="Kullanici_TAMAD">
+                Firma Adı:
+                <i class="im im-icon-Male"></i>
+                <input type="text" class="input-text" name="Firma_TAMAD" id="Kullanici_TAMAD" value="" />
+            </label>
+        </p>
+
+        <p class="form-row form-row-wide">
+            <label for="Gizli_SORU">
+                Gizli Sorunuz:
+                <i class="im im-icon-Data-Security"></i>
+                <input type="text" class="input-text" name="Gizli_SORU" id="Gizli_SORU" value="" />
+            </label>
+        </p>
+        <p class="form-row form-row-wide">
+            <label for="Gizli_CEVAP">
+                Gizli Sorunuzun Cevabı:
+                <i class="im im-icon-Data-Shield"></i>
+                <input type="text" class="input-text" name="Gizli_CEVAP" id="Gizli_CEVAP" value="" />
+            </label>
+        </p>
+        <p class="form-row form-row-wide">
+            <label for="Kullanici_PAROLA">
+                Yeni Parola:
+                <i class="im im-icon-Lock-2"></i>
+                <input class="input-text" type="password" name="Firma_PAROLA" id="Kullanici_PAROLA" />
+            </label>
+        </p>
+        <p class="form-row">
+            <input type="submit" class="button border fw margin-top-10" name="SifremiUnuttum" value="Yeni Parola" />
+        </p>
+    </form>
+
+    @if (ViewBag.Mesaj != null)
+    {
+        <p style="height:25px;width:280px; font-size:16px;">
+            <label class="label-danger">@ViewBag.Mesaj</label>
+        </p>
+    }
+

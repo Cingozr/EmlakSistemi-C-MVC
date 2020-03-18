@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewBag.Title = "Giris";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="titlebar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Firma Girişi | Firma Kayıt</h2>
+
+                <!-- Breadcrumbs -->
+                <nav id="breadcrumbs">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li>Giriş & Yeni Kayıt</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Contact
+================================================== -->
+<!-- Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <!--Tab -->
+            <div class="my-account style-1 margin-top-5 margin-bottom-40">
+                <ul class="tabs-nav">
+                    <li class=""><a class="button border" href="#tab1">Giriş</a></li>
+                    <li><a class="button  border" href="#tab2">Kayıt Ol</a></li>
+                    <li class="button border"><a  href="#tab3">Parolanı Mı Unuttun?</a></li>
+                </ul>
+                <div class="tabs-container alt">
+                    <!-- Login -->
+                    <div class="tab-content" id="tab1" style="display: none;">
+                        <form action="@Url.Action("GirisYap","Uye")" method="post" class="form-horizontal">
+                            <p class="form-row form-row-wide">
+                                <label for="username">
+                                    Firma Adı:
+                                    <i class="im im-icon-Male"></i>
+                                    <input type="text" class="input-text" name="Firma_TAMAD" id="Firma_TAMAD" value="" />
+                                </label>
+                            </p>
+                            <p class="form-row form-row-wide">
+                                <label for="password">
+                                    Firma Parola:
+                                    <i class="im im-icon-Lock-2"></i>
+                                    <input class="input-text" type="password" name="Firma_PAROLA" id="password" />
+                                </label>
+                            </p>
+                            <p class="form-row">
+                                <input type="submit" class="button border margin-top-10" name="login" value="Giriş Yap" />
+                                <label for="rememberme" class="rememberme">
+                                    <input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Beni Hatırla
+                                </label>
+                            </p>
+                        </form>
+                        @if (ViewBag.Mesaj != null)
+                        {
+                            <p style="color:red; font-size:12px;">
+                                @ViewBag.Mesaj
+                            </p>
+                        }
+                    </div>
+                    <!-- Register -->
+                    <div class="tab-content" id="tab2" style="display: none;">  
+                            @{
+                                Html.RenderAction("KayitOl", "Uye");
+                            }
+                        
+                    </div>
+                    <div class="tab-content" id="tab3" style="display: none;">
+                            @{
+                                Html.RenderAction("ParolamiUnuttum", "Uye");
+                             }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

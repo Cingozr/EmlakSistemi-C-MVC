@@ -1,0 +1,122 @@
+﻿@model EmlakSistemi.ViewModel.IlanAramaModel
+
+@{
+    Layout = "~/Views/Shared/_DropLayout.cshtml";
+}
+
+
+
+
+
+
+
+
+<div class="main-search-box no-shadow">
+
+    <!-- Row With Forms -->
+    <div class="row with-forms">
+
+        
+        <div class="col-md-6">
+            <div class="form">
+                <h5>İlan Başlığı</h5>
+                @Html.TextBoxFor(m => m.Ilan_AD,new {@class="form-control" })
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form">
+                <h5>İlan NO</h5>
+                @Html.TextBoxFor(m => m.Ilan_AD)
+            </div>
+        </div>
+    </div>
+    <a href="#" class="more-search-options-trigger margin-top-10" data-open-title="Aramayı Genişlet" data-close-title="Aramayı Daralt"></a>
+    <div class="more-search-options relative">
+        <div class="more-search-options-container">
+            <div class="col-md-6">
+                <div class="notification notice large margin-bottom-55">
+                    <div class="row with-forms">
+                        @{ Html.RenderAction("KategoriListesi", "Emlak");}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="notification notice large margin-bottom-55">
+                    <div class="row with-forms">
+                        @{Html.RenderAction("AdresListe", "Emlak");}
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="row with-forms">
+                <div class="col-md-3">
+                    <div class="select-input disabled-first-option" data-unit="Sq Ft">
+                        @Html.TextBoxFor(m => m.Ilan_METREKARE_BASLANGIC, new { @placeholder = "Min M²" })
+                        <select>
+                            <option>Min M²</option>
+                            <option>300</option>
+                            <option>400</option>
+                            <option>500</option>
+                            <option>700</option>
+                            <option>800</option>
+                            <option>1000</option>
+                            <option>1500</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="select-input disabled-first-option">
+                        @Html.TextBoxFor(m => m.Ilan_METREKARE_BITIS, new { @placeholder = "Max M²" })
+                        <select>
+                            <option>Max M²</option>
+                            <option>300</option>
+                            <option>400</option>
+                            <option>500</option>
+                            <option>700</option>
+                            <option>800</option>
+                            <option>1000</option>
+                            <option>1500</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="select-input disabled-first-option">
+                        @Html.TextBoxFor(m => m.Ilan_FIYAT_BASLANGIC, new { @placeholder = "Min ₺ " })
+                        <select>
+                            <option>Min Fiyat</option>
+                            <option>1000</option>
+                            <option>2000</option>
+                            <option>3000</option>
+                            <option>4000</option>
+                            <option>5000</option>
+                            <option>10000</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="select-input disabled-first-option">
+                        @Html.TextBoxFor(m => m.Ilan_FIYAT_BITIS, new { @placeholder = "Max ₺ " })
+                        <select>
+                            <option>Max Fiyat</option>
+                            <option>1000</option>
+                            <option>2000</option>
+                            <option>3000</option>
+                            <option>4000</option>
+                            <option>5000</option>
+                            <option>10000</option>
+                        </select>
+                    </div>
+                </div>               
+            </div>
+           <hr />
+
+               @{ Html.RenderAction("AramaSecenekleri", "Arama");}
+            
+            </div>
+    </div>
+
+</div>
+<button type="submit" class="button btn-lg btn-block" >Ara</button>
+
+
+                        

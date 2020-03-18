@@ -1,0 +1,16 @@
+﻿@model List<EmlakSistemi.Models.Muhit>
+
+@{
+    Layout = null;
+}
+
+@{ 
+    var goruntuleme = "";
+    for (int i = 0; i < Model.Count; i++)
+    {
+        goruntuleme += Model[i].Muhit_AD + " | ";
+    }
+}
+<span>@goruntuleme</span>
+
+

@@ -1,0 +1,273 @@
+﻿@model EmlakSistemi.Models.Ilanlar
+   
+@using EmlakSistemi.ViewModel.Ilan
+<div id="titlebar" class="property-titlebar margin-bottom-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+
+                <a href="listings-list-with-sidebar.html" class="back-to-listings"></a>
+                <div class="property-title">
+                    <h2><mark class="color">@Model.Ilan_AD.ToUpper() </mark>  </h2>
+                    <span>
+                        <a href="#location" class="listing-address">
+                            <i class="fa fa-map-marker"></i>
+                            @Model.Mahalle.ilceler.iller.Il_AD / @Model.Mahalle.ilceler.Ilce_AD / @Model.Mahalle.Mahaller_AD
+                        </a>
+                    </span>
+                </div>
+                <div class="property-pricing">
+                    <div>@String.Format("{0:C}", @Model.Ilan_FIYAT)</div>
+                    <div><h5>İlan No: <mark class="color">@Model.Ilan_NO </mark></h5></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row margin-bottom-50">
+        <div class="col-md-12">
+
+            <!-- Slider -->
+            <div class="property-slider default">
+               <img src="~/images/single-property-01.jpg" class="item mfp-gallery" alt="Alternate Text" />
+               <img src="~/images/single-property-02.jpg" class="item mfp-gallery" alt="Alternate Text" />
+               <img src="~/images/single-property-03.jpg" class="item mfp-gallery" alt="Alternate Text" />
+               <img src="~/images/single-property-04.jpg" class="item mfp-gallery" alt="Alternate Text" />
+               <img src="~/images/single-property-05.jpg" class="item mfp-gallery" alt="Alternate Text" />
+               <img src="~/images/single-property-06.jpg" class="item mfp-gallery" alt="Alternate Text" />
+            </div>
+            <!-- Slider Thumbs -->
+            <div class="property-slider-nav">
+                <div class="item"><img src="~/images/single-property-01.jpg" alt=""></div>
+                <div class="item"><img src="~/images/single-property-02.jpg" alt=""></div>
+                <div class="item"><img src="~/images/single-property-03.jpg" alt=""></div>
+                <div class="item"><img src="~/images/single-property-04.jpg" alt=""></div>
+                <div class="item"><img src="~/images/single-property-05.jpg" alt=""></div>
+                <div class="item"><img src="~/images/single-property-06.jpg" alt=""></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+            <h4 class="headline margin-top-70 margin-bottom-30">Tabs Style 1</h4>
+
+            <div class="style-2">
+
+                <!-- Tabs Navigation -->
+                <ul class="tabs-nav">
+                    <li class="active"><a href="#tab1">İlan Detayları</a></li>
+                    <li class=""><a href="#tab2">Konumu</a></li>
+                    <li class=""><a href="#tab3">Emlak Kredisi</a></li>
+                </ul>
+
+                <!-- Tabs Content -->
+                <div class="tabs-container">
+                    <div class="tab-content" id="tab1" style="display: none;">
+                        <div class="col-lg-12">
+                            <div class="property-description">
+                                <!-- Main Features -->
+                                <ul class="property-main-features">
+                                    <li>M² <i class="fa fa-arrows-alt" aria-hidden="true"></i> <span>@Model.Ilan_METREKARE</span></li>
+                                    <li>Oda Sayısı <i class="fa fa-bed"></i><span class="text-center">4</span></li>
+                                    <li>Isınma <i class="fa fa-fire"></i><span class="text-center">@Model.IsıtmaBilgisi.Isıtma_AD</span></li>
+                                    <li>Kullanım <i class="fa fa-key"></i> <span>@Model.DurumBilgisi.KullanimDurum_AD</span></li>
+                                    <li>Kat <i class="fa fa-level-up" aria-hidden="true"></i> <span>@Model.KatBilgisi.Kat_AD</span></li>
+                                    <li>Bina Yaş <i class="fa fa-arrow-up" aria-hidden="true"></i> <span>@Model.BinaYasBilgisi.BinaYas_AD</span></li>
+                                </ul>
+
+                                <!-- Description -->
+                                <h3 class="desc-headline">İlan Açıklaması</h3>
+                                <div class="show-more">
+                                    <p>
+                                        @Html.Raw(@Model.Ilan_ACIKLAMA)
+                                    </p>
+                                    <a href="#" class="show-more-button">Daha Fazla Göster <i class="fa fa-angle-down"></i></a>
+                                </div>
+                                <!-- Details -->
+                                <h3 class="desc-headline">Detaylar</h3>
+                                <ul class="property-features margin-top-0">
+                                    <li>İlan No: <span><mark class="color">@Model.Ilan_NO</mark></span></li>
+                                    <li>Fiyat: <span>@String.Format("{0:C}", @Model.Ilan_FIYAT)</span></li>
+                                    <li>Aidat: <span>@String.Format("{0:C}", @Model.Ilan_AIDAT)</span></li>
+                                    <li>Şehir: <span>@Model.Mahalle.ilceler.iller.Il_AD</span></li>
+                                    <li>İlçe: <span>@Model.Mahalle.ilceler.Ilce_AD</span></li>
+                                    <li>Mahalle : <span>@Model.Mahalle.Mahaller_AD</span></li>
+                                    <li>Kullanım Durumu: <span>@Model.DurumBilgisi.KullanimDurum_AD</span></li>
+                                    <li>Kat: <span>@Model.KatBilgisi.Kat_AD</span></li>
+                                    <li>Bina Yaş: <span>@Model.BinaYasBilgisi.BinaYas_AD</span></li>
+                                </ul>
+
+                                <!-- Features -->
+                               
+		
+	                        
+
+                                <div class="style-5">
+                                   <div class="toggle-wrap">
+                                        <span class="trigger"><a href="#">Cephe<i class="sl sl-icon-plus"></i></a></span>
+                                        <div class="toggle-container" style="display: none;">
+                                            <ul class="property-features checkboxes margin-top-0">
+                                                @foreach (var item in Model.Cephe.ToList())
+                                                {
+                                                    <li>@item.Cephe_AD</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                     <div class="toggle-wrap">
+                                            <span class="trigger "><a href="#">İç Özellikler<i class="sl sl-icon-plus"></i></a></span>
+                                            <div class="toggle-container" style="display: none;">
+                                                <ul class="property-features checkboxes margin-top-0">
+                                                    @foreach (var item in Model.IcOzellik.ToList())
+                                                    {
+                                                        <li>@item.IcOzellik_AD</li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    <div class="toggle-wrap">
+                                        <span class="trigger "><a href="#">Dış Özellikler<i class="sl sl-icon-plus"></i></a></span>
+                                        <div class="toggle-container" style="display: none;">
+                                            <ul class="property-features checkboxes margin-top-0">
+                                                @foreach (var item in Model.DisOzellik.ToList())
+                                                {
+                                                    <li>@item.DisOzellik_AD</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="toggle-wrap">
+                                        <span class="trigger "><a href="#">Engelliye Uygun<i class="sl sl-icon-plus"></i></a></span>
+                                        <div class="toggle-container" style="display: none;">
+                                            <ul class="property-features checkboxes margin-top-0">
+                                                @foreach (var item in Model.EngelliUygunluk.ToList())
+                                                {
+                                                    <li>@item.EngelliUygunluk_AD</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="toggle-wrap">
+                                        <span class="trigger "><a href="#">Muhit<i class="sl sl-icon-plus"></i></a></span>
+                                        <div class="toggle-container" style="display: none;">
+                                            <ul class="property-features checkboxes margin-top-0">
+                                                @foreach (var item in Model.Muhit.ToList())
+                                                {
+                                                    <li>@item.Muhit_AD</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="toggle-wrap">
+                                        <span class="trigger "><a href="#">Ulaşım<i class="sl sl-icon-plus"></i></a></span>
+                                        <div class="toggle-container" style="display: none;">
+                                            <ul class="property-features checkboxes margin-top-0">
+                                                @foreach (var item in Model.Ulasim.ToList())
+                                                {
+                                                    <li>@item.Ulasim_AD</li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="toggle-wrap">
+                                        <span class="trigger "><a href="#">Manzara<i class="sl sl-icon-plus"></i></a></span>
+                                        <div class="toggle-container" style="display: none;">
+                                            <ul class="property-features checkboxes margin-top-0">
+                                                @foreach (var item in Model.Manzara.ToList())
+                                                {
+                                                    <li>@item.Manzara_AD</li>
+
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="tab2" style="display: inline-block;">
+                        <h3 class="desc-headline no-border" id="location">Location</h3>
+                        <div id="propertyMap-container">
+                            <div id="propertyMap" data-latitude="40.7427837" data-longitude="-73.11445617675781"></div>
+                            <a href="#" id="streetView">Street View</a>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="tab3" style="display: none;">
+                        <iframe name="BlokFrame" id="BlokFrame" src="http://hesapmatik.com/SiteneEkle/Kredi-Hesapla.php" frameborder="0" width="300" height="400"></iframe>
+                    </div>
+
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <hr />
+                   <div class="col-md-12">
+                       <div class="col-lg-6 ">
+                           <div class="sidebar sticky right" style="min-height:352px;">
+                               
+
+                               <div class="widget">
+                                   <h3 class="desc-headline text-center"><mark class="color">Firma Bilgileri</mark> </h3>
+                                   <!-- Agent Widget -->
+                                   <div class="agent-widget">
+                                       <div class="agent-title">
+                                           <div class="agent-photo"><img src="~/images/agent-03.jpg" alt="" /></div>
+                                           <div class="agent-details">
+                                               <h4><a href="#">@Model.aspnet_Users.UserName</a></h4>
+                                               <span><i class="sl sl-icon-call-in"></i>(123) 123-456</span>
+                                           </div>
+                                           <div class="clearfix"></div>
+                                       </div>
+                                       @{
+                                           Html.RenderAction("MesajGonder", "Emlak");
+                                    }
+
+                                   </div>
+                                   <!-- Agent Widget / End -->
+                               </div>
+                               <!-- Widget / End -->
+                           </div>
+                       </div>
+                       <div class="col-md-6">
+                           
+                           <div class="widget">
+                               <h3 class="margin-bottom-35 text-center text-danger"><mark class="color">Firmanın Diğer İlanları</mark></h3>
+                               <div class="listing-carousel outer">
+                                       <div class="item">
+                                           <div class="listing-item compact">
+                                               <a href="#" class="listing-img-container">
+                                                   <div class="listing-badges">
+                                                       <span class="featured">Featured</span>
+                                                       <span>For Sale</span>
+                                                   </div>
+                                                   <div class="listing-img-content">
+                                                       <span class="listing-compact-title">Eagle Apartments <i>$275,000</i></span>
+                                                       <ul class="listing-hidden-content">
+                                                           <li>Area <span>530 sq ft</span></li>
+                                                           <li>Rooms <span>3</span></li>
+                                                           <li>Beds <span>1</span></li>
+                                                           <li>Baths <span>1</span></li>
+                                                       </ul>
+                                                   </div>
+                                                   <img src="~/images/listing-01.jpg" alt="">
+                                               </a>
+                                           </div>
+                                       </div>
+
+                               </div>
+                           </div>
+                       </div>
+                       
+                   </div>
+                </div>
+
+            </div>
+       
+        <!-- Sidebar / End -->
+    </div>
+</div>

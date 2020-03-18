@@ -1,0 +1,131 @@
+﻿@model EmlakSistemi.Models.Sozlesmeler
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/FirmaPanel/Views/Shared/_FirmaPanel.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Sozlesmeler</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.aspnet_Users.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.aspnet_Users.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SozlesmeTuru.Sozlesmetur_AD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SozlesmeTuru.Sozlesmetur_AD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_BASLIK)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_BASLIK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_ACIKLAMA)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_ACIKLAMA)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_BASTARIH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_BASTARIH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_BITTARIH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_BITTARIH)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_KISIAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_KISIAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_KISISOYAD)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_KISISOYAD)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Mahalle_ID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Mahalle_ID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_KAPINO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_KAPINO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_PAFTANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_PAFTANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_ADANO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_ADANO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_PARSELNO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_PARSELNO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sozlesme_NO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sozlesme_NO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Sozlesme_ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

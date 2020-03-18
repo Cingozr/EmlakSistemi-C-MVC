@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "RolAta";
+}
+
+<form action="@Url.Action("RolAta","Anasayfa")" method="post" class="form-horizontal">
+    <fieldset>
+        @if (User.Identity.Name != null)
+        {
+            <div class="form-group">
+                <label class="col-md-4 control-label" for=""></label>
+                <div class="col-md-6">
+                    <select name="Kullanici_TAMAD" class="form-control">
+                        @foreach (MembershipUser Firmalar in ViewBag.Firmalar)
+                        {
+                            <option value="@Firmalar.UserName">@Firmalar.UserName</option>
+                        }
+
+
+                    </select>
+                </div>
+            </div>
+        }
+
+        <!-- Button -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""></label>
+            <div class="col-md-6">
+                <select name="Rol_AD" class="form-control">
+                    @foreach (string Rol in ViewBag.Roller)
+                    {
+                        <option value="@Rol">@Rol</option>
+                    }
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-4 control-label" for=""></label>
+            <div class="col-md-4">
+                <button id="" name="" class="btn btn-success">Kaydet</button>
+            </div>
+        </div>
+    </fieldset>
+</form>

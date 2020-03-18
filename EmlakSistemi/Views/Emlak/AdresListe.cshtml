@@ -1,0 +1,75 @@
+﻿@model EmlakSistemi.ViewModel.SehirModel
+
+@{
+    Layout = "~/Views/Shared/_DropLayout.cshtml";
+}
+
+  
+
+
+<div class="row with-forms">
+    <!-- Status -->
+    <div class="col-md-3">
+        <h5><mark class="color">İL</mark> </h5>
+        @Html.DropDownListFor(m => m.Il_ID, Model.SehirList, new { @class = "form-control" })
+    </div>
+    <!-- Type -->
+    <div class="col-md-3">
+        <h5><mark class="color">İLÇE</mark></h5>
+       @Html.DropDownListFor(m => m.Ilce_ID, Model.IlceList, new { @class = "form-control" })
+    </div>
+    <div class="col-md-3">
+        <h5><mark class="color">MAHALLE</mark></h5>
+        @Html.DropDownListFor(m => m.Mahalle_ID, Model.MahalleList, new { @class = "form-control" })
+    </div>
+</div>
+
+
+    @section scripts
+{
+
+        <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Il_ID").change(function () {
+                var id = $(this).val();
+                var ilceList = $("#Ilce_ID");
+
+                ilceList.empty();
+
+
+                $.ajax({
+                    url: '/Emlak/IlceList',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { 'id': id },
+                    success: function (data) {
+                        $.each(data, function (index, option) {
+                            ilceList.append('<option value=' + option.Value + '> ' + option.Text + ' </option');
+                        });
+                    }
+                });
+                $("#Ilce_ID").change(function () {
+                    var ilceid = $(this).val();
+                    var mahalleList = $("#Mahalle_ID");
+                    mahalleList.empty();
+                    $.ajax({
+                        url: '/Emlak/SemtList',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: { 'id': ilceid },
+                        success: function (data) {
+                            $.each(data, function (index, option) {
+                                mahalleList.append('<option value=' + option.Value + '> ' + option.Text + ' </option');
+                            });
+                        }
+                    });
+                });
+
+            });
+        });
+        </script>
+
+    }
+
+
+

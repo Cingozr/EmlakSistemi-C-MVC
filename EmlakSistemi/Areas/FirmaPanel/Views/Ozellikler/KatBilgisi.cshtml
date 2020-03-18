@@ -1,0 +1,10 @@
+﻿@model EmlakSistemi.Models.KatBilgisi
+
+
+@using (Html.BeginForm("KatBilgisi", "Ozellikler", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.Kat_AD, "Kat Sırası Giriniz:", new { @class = "form-control" })
+    @Html.TextBoxFor(m => m.Kat_AD, new { @class = "form-control" })
+    <input type="submit" class="btn btn-success" name="name" value="Kaydet" />
+}
+

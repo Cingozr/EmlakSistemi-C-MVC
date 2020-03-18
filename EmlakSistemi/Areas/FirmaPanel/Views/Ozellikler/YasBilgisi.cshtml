@@ -1,0 +1,11 @@
+﻿@model EmlakSistemi.Models.BinaYasBilgisi
+
+
+
+@using (Html.BeginForm("YasBilgisi", "Ozellikler", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.BinaYas_AD, "Bina Yaşı Giriniz:", new { @class = "form-control" })
+    @Html.TextBoxFor(m => m.BinaYas_AD, new { @class = "form-control" })
+    <input type="submit" class="btn btn-success" name="name" value="Kaydet" />
+}
+

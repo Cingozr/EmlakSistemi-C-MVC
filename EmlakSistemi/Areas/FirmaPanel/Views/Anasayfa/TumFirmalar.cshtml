@@ -1,0 +1,117 @@
+﻿
+@{
+    ViewBag.Title = "TumFirmalar";
+    Layout = "~/Areas/FirmaPanel/Views/Shared/_FirmaPanel.cshtml";
+}
+
+
+
+@using System.Web.Security;
+@model MembershipUserCollection
+
+<div class="container">
+    <h2>Kullanıcılar</h2>
+    <a href="@Url.Content("Uye/KayitOl")" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Yeni Kullanici Ekle</a>
+    
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".example-modal-sm">Yeni Rol Ekle</button>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Kullanici Adı</th>
+                <th>E-Mail</th>
+                <th>Kayıt Tarihi</th>
+                <th>Son Giriş Tarihi</th>
+
+                <th>Rolü</th>
+                <th>Rol İşlemi</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MembershipUser Kullanicilar in Model)
+            {
+                <tr>
+                    <td>@Kullanicilar.UserName</td>
+                    <td>@Kullanicilar.Email</td>
+                    <td>@Kullanicilar.CreationDate</td>
+                    <td>@Kullanicilar.LastLoginDate</td>
+                    <td><a class="btn btn-primary roller" data-uyeadi="@Kullanicilar.UserName">Rolleri</a></td>
+                    <td><button type="button" class="btn btn-success" data-toggle="modal" data-target=".example-modal-lg">Rol Ekle</button>
+                    <td class="td-actions text-right">
+
+                        <button type="button" rel="tooltip" class="btn btn-success btn-simple" data-original-title="" title="">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" class="btn btn-danger btn-simple" data-original-title="" title="">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@section scripts{
+
+
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script>
+        $(".roller").click(function () {
+            var ka = $(this).data("uyeadi");
+
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("UyeRolleri", "Anasayfa", new { area = "FirmaPanel" })",
+                data: { Kullanici_TAMAD: ka },
+                success:function(veri){
+                    alert(veri);
+            }
+            });
+        });
+    </script>
+
+
+}
+
+
+
+
+
+
+<div class="modal fade example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Yeni Rol Ekleme</h4>
+            </div>
+            <div class="modal-body">
+                @{ 
+                    Html.RenderAction("RolEkle", "Anasayfa");
+                }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Rol Atama</h4>
+            </div>
+            <div class="modal-body">
+               @{ 
+                   Html.RenderAction("RolAta", "Anasayfa");
+               }
+            </div>
+        </div>
+    </div>
+</div>
+

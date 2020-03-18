@@ -1,0 +1,105 @@
+﻿
+@{
+    ViewBag.Title = "FirmaProfil";
+    Layout = "~/Areas/FirmaPanel/Views/Shared/_FirmaPanel.cshtml";
+}
+<div class="row">
+    <div class="col-md-9">
+        <div class="card" id="profile-main">
+            <div class="card-content">
+                <h3>Hoşgeldin @User.Identity.Name.ToUpper()</h3>
+
+
+                <div role="tabpanel">
+                    <ul class="nav nav-pills">
+                        <li class="active">
+                            <a href="#profile11" aria-controls="profile11" role="tab" data-toggle="tab">FİRMA PROFİLİ</a>
+                        </li>
+                        <li>
+                            <a href="#firmabilgileri" aria-controls="settings11" role="tab" data-toggle="tab">BİLGİLERİ DEĞİŞTİR</a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="profile11">
+                           
+                            <div class="row">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center"></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th class="text-right"></th>
+                                                <th class="text-right"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-center">1</td>
+                                                <td>Andrew Mike</td>
+                                                <td>Develop</td>
+                                                <td>2013</td>
+                                                <td class="text-right">€ 99,225</td>
+                                                <td class="td-actions text-right">
+
+                                                    <a href="#firmabilgileri" aria-controls="settings11" role="tab" data-toggle="tab" class="btn btn-xs btn-info">Düzenle</a>
+                                                    <a href="#firmabilgileri" aria-controls="settings11" role="tab" data-toggle="tab" class="btn btn-xs btn-danger">Sil</a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="firmabilgileri">
+                            <div class="widget p-25">
+                                <div class="widget-body">
+                                    @using (Html.BeginForm())
+                                    {
+                                        <input class="form-control" type="text" name="Firma_AD" placeholder="Firma Adı " />
+                                        <input class="form-control" type="text" name="Firma_UNVAN" placeholder="Firma Ünvanı " />
+                                        <input class="form-control" type="text" name="Firma_VERGIDAIRESI" placeholder="Firma Vergi Dairesi " disabled />
+                                        <input class="form-control" type="text" name="Firma_VERGINO" placeholder="Firma Vergi No " disabled/>
+                                        <input class="form-control" type="text" name="Firma_SABITTEL" placeholder="Firma telefonu " />
+                                        <input class="form-control" type="text" name="Fırma_ADRES" placeholder="Firma Adres " />
+                                        <input class="form-control" type="text" name="FirmaTur_ID" placeholder="Firma Türü " />
+                                        <button class="btn btn-success">
+                                            <span class="btn-label">
+                                                <i class="material-icons">check</i>
+                                            </span>
+                                            Güncelle
+                                            <div class="ripple-container"></div>
+                                        </button>
+
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card card-profile">
+            <div class="card-avatar">
+                <a href="#pablo">
+                    <img src="~/Areas/FirmaPanel/assets/img/faces/avatar.jpg" />
+                </a>
+            </div>
+            <div class="card-content">
+                <h6 class="category text-gray">CEO / Co-Founder</h6>
+                <h4 class="card-title">@User.Identity.Name.ToUpper()</h4>
+                <p class="description">
+                    Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...
+                </p>
+                <a href="#pablo" class="btn btn-rose btn-round">Follow</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+﻿@model EmlakSistemi.ViewModel.IlanAramaModel
+@{
+    
+    Layout = "~/Views/Shared/_DropLayout.cshtml";
+}
+
+
+<div class="row with-forms">
+    <div class="col-md-4">
+        
+            @Html.DropDownListFor(m => m.Kat_ID, Model.Katlistesi, new { @class = "form-control", @placeholder="Kat Seçiniz" })
+       
+    </div>
+    <div class="col-md-4">
+        
+            @Html.DropDownListFor(m => m.Oda_ID, Model.OdaListesi, new { @class = "form-control", @placeholder = "Oda Sayısı Seçiniz" })
+        
+    </div>
+    <div class="col-md-4">
+        
+            @Html.DropDownListFor(m => m.Isıtma_ID, Model.IsitmaListesi, new { @class = "form-control", @placeholder = "Isıtma Seçiniz" })
+        
+    </div>   
+
+    </div>
+<div class="row with-forms">
+    <div class="col-md-4">
+       
+            @Html.DropDownListFor(m => m.KullanimDurum_ID, Model.KullanimDurumListe, new { @class = "form-control", @placeholder = "Kullanım Durumu Seçiniz" })
+        
+    </div>
+    <div class="col-md-4">
+       
+            @Html.DropDownListFor(m => m.BinaYas_ID, Model.BinaYasListesi, new { @class = "form-control", @placeholder = "Bina Yaşı Seçiniz" })
+       
+    </div>
+    <div class="col-md-4">
+
+        <input id="Ilan_TARIHI" placeholder="Tarihe Seçiniz" type="date" width="10" class="form-control" name="Ilan_TARIHI" />
+    </div>
+
+</div>

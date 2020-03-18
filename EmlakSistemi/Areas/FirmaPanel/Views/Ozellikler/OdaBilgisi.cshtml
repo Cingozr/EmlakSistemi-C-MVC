@@ -1,0 +1,11 @@
+﻿@model EmlakSistemi.Models.OdaBilgisi
+
+
+@using (Html.BeginForm("OdaBilgisi", "Ozellikler", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.Oda_AD, "Oda Sayısı Giriniz:", new { @class = "form-control" })
+    @Html.TextBoxFor(m => m.Oda_AD, new { @class = "form-control" })
+    <input type="submit" class="btn btn-success" name="name" value="Kaydet" />
+}
+
+

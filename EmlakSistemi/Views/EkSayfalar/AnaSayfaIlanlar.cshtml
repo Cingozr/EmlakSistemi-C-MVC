@@ -1,0 +1,69 @@
+﻿@model IEnumerable<EmlakSistemi.Models.Ilanlar>
+
+@{ 
+    Layout = "~/Views/Shared/_DropLayout.cshtml";
+}
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-12">
+            <h3 class="headline-box">Öne Çıkan İlanlar </h3>
+        </div>
+
+        <!-- Carousel -->
+        <div class="col-md-12">
+            <div class="carousel">
+
+                <!-- Listing Item -->
+                @foreach (var Liste in Model)
+                {
+                    <div class="carousel-item">
+                        <div class="listing-item">
+                            <a href="single-property-page-1.html" class="listing-img-container">
+                                <div class="listing-badges">
+                                    <span class="featured">@Html.DisplayFor(modelItem => Liste.AnaKategori.AnaKategori_AD)</span>
+                                    <span>@Html.DisplayFor(modelItem => Liste.AnaKategori.AltKategori.AltKategori_AD)</span>
+                                </div>
+                                <div class="listing-img-content">
+                                    <span class="listing-price"><mark class="color">@String.Format("{0:C}", @Liste.Ilan_FIYAT)</mark> </span>
+                                    <span class="like-icon tooltip"></span>
+                                </div>
+                                <div class="listing-carousel">
+                                    <div><img src="images/listing-01.jpg" alt=""></div>
+                                    <div><img src="images/listing-01b.jpg" alt=""></div>
+                                    <div><img src="images/listing-01c.jpg" alt=""></div>
+                                </div>
+                            </a>
+
+                            <div class="listing-content">
+                                <div class="listing-title">
+                                    <h4><a href="@Url.Action("IlanDetay","Emlak")/@Liste.Ilan_ID">@Liste.Ilan_AD</a></h4>
+                                    <i class="fa fa-map-marker"></i>
+                                    @Html.DisplayFor(modelItem => Liste.Mahalle.ilceler.iller.Il_AD)/@Html.DisplayFor(modelItem => Liste.Mahalle.ilceler.Ilce_AD) / @Html.DisplayFor(modelItem => Liste.Mahalle.Mahaller_AD)
+
+                                    <a href="single-property-page-1.html" class="details button border">Detay</a>
+                                </div>
+                                <ul class="listing-details">
+                                    <li>M²: @Liste.Ilan_METREKARE</li>
+                                    <li>Oda: @Html.DisplayFor(modelItem => Liste.OdaBilgisi.Oda_AD)</li>
+                                    <li>Durum:@Html.DisplayFor(modelItem => Liste.DurumBilgisi.KullanimDurum_AD)</li>
+                                    <li>Tip:@Html.DisplayFor(modelItem => Liste.AnaKategori.AnaKategori_AD) </li>
+                                    <li>Isıtma:@Html.DisplayFor(modelItem => Liste.IsıtmaBilgisi.Isıtma_AD) </li>
+                                    <li>Bina Yaşı:@Html.DisplayFor(modelItem => Liste.BinaYasBilgisi.BinaYas_AD) </li>
+                                </ul>
+                                <div class="listing-footer">
+                                    <a href="#"><i class="fa fa-user"></i> @Html.DisplayFor(modelItem => Liste.aspnet_Users.UserName)</a>
+                                    <span><i class="fa fa-calendar-o"></i> @Html.DisplayFor(modelItem => Liste.Ilan_TARIHI)</span>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+        <!-- Carousel / End -->
+    </div>
+</div>
+

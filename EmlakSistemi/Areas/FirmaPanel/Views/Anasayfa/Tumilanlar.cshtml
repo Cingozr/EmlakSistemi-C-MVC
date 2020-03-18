@@ -1,0 +1,127 @@
+﻿@model IEnumerable<EmlakSistemi.Models.Ilanlar>
+@{
+    ViewBag.Title = "Datatable";
+    Layout = "~/Areas/FirmaPanel/Views/Shared/_FirmaPanel.cshtml";
+}
+@using EmlakSistemi.Models
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-content">
+                        <h4 class="card-title">DataTables.net</h4>
+                        <div class="toolbar">
+                            <!--        Here you can write extra buttons/actions for the toolbar              -->
+                        </div>
+                        <div class="material-datatables">
+                            <table id="datatables" class="table table-striped table-no-bordered table-hover" cellspacing="0" width="100%" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>İlan NO</th>
+                                        <th>İlan Başlığı</th>
+                                        @if (@User.IsInRole("Admin"))
+	                                    {
+		                                       <th>Firma</th> 
+	                                    }
+                                        <th>İlan Fİyatı</th>
+                                        <th>Adres</th>
+                                        <th>Yayın Tarihi</th>
+                                        <th class="disabled-sorting text-right">İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>İlan Başlığı</th>
+                                        @if (@User.IsInRole("Admin"))
+                                        {
+                                            <th>Firma</th>
+                                        }
+                                        <th>İlan Fİyatı</th>
+                                        <th>Adres</th>
+                                        <th>Yayın Tarihi</th>
+                                        <th class="disabled-sorting text-right">İşlemler</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                    @foreach (var Ilanlar in Model)
+                                    {
+                                        <tr>
+                                            <td>@Ilanlar.Ilan_NO</td>
+                                            <td>@Ilanlar.Ilan_AD</td>
+                                            @if (@User.IsInRole("Admin"))
+                                            {
+                                                <td>@Html.DisplayFor(m=> @Ilanlar.aspnet_Users.UserName)</td>
+                                            }
+                                            <td>@String.Format("{0:C}",@Ilanlar.Ilan_FIYAT)</td>
+                                            <td>@Html.DisplayFor(m => @Ilanlar.Mahalle.ilceler.iller.Il_AD) /
+                                            @Html.DisplayFor(m => @Ilanlar.Mahalle.ilceler.Ilce_AD)/
+                                            @Html.DisplayFor(m => @Ilanlar.Mahalle.Mahaller_AD)</td>
+                                            <td>@Ilanlar.Ilan_TARIHI</td>
+                                            <td class="text-right">
+                                                <a href="#" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span> Sil</a>
+                                            </td>
+                                        </tr>
+                                    }
+                                    
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- end content-->
+                </div>
+                <!--  end card  -->
+            </div>
+            <!-- end col-md-12 -->
+        </div>
+   
+
+
+
+
+@section scripts{
+    
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#datatables').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#datatables').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script> 
+    }

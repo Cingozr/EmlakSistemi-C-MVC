@@ -1,0 +1,16 @@
+﻿@model List<EmlakSistemi.Models.Manzara>
+
+@{
+    Layout = null;
+}
+
+@{ 
+    var goruntuleme = "";
+    for (int i = 0; i < Model.Count; i++)
+    {
+        goruntuleme += Model[i].Manzara_AD + " | ";
+    }
+}
+<span>@goruntuleme</span>
+
+

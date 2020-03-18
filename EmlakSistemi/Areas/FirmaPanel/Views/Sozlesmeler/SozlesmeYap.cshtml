@@ -1,0 +1,145 @@
+﻿@model EmlakSistemi.Models.Sozlesmeler
+
+@{ 
+    Layout = null;
+}
+
+@using (Html.BeginForm("SozlesmeYap", "Sozlesmeler", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Sozlesmeler</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sozlesme_BASLIK, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_BASLIK, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_BASLIK, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sozlesme_ACIKLAMA, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_ACIKLAMA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_ACIKLAMA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="datetime" class="form-control" name="@Model.Sozlesme_BASTARIH" value="@Model.Sozlesme_BASTARIH" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="datetime"  class="form-control" name="@Model.Sozlesme_BITTARIH" value="@Model.Sozlesme_BITTARIH" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sozlesme_KISIAD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_KISIAD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_KISIAD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sozlesme_KISISOYAD, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_KISISOYAD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_KISISOYAD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sozlesme_KAPINO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_KAPINO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_KAPINO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sozlesme_PAFTANO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_PAFTANO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_PAFTANO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sozlesme_ADANO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_ADANO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_ADANO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sozlesme_PARSELNO, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_PARSELNO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_PARSELNO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Sozlemetur_ID, "Sozlemetur_ID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Sozlemetur_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Sozlemetur_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @{ Html.RenderAction("AdresListe", "Emlak");}
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+@section scripts{
+
+    <script src="~/Scripts/dropzone/dropzone.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqzRB_0p-bo_bWg1oMfMgMxTQ4pGHbCgk&libraries=places"></script>
+
+
+    <script src="~/js/map-search.js"></script>
+    <script src="~/js/map-single.js"></script>
+    <script src="~/Scripts/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/assets/ckfinder/ckfinder.js"></script>
+    <script src="~/assets/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.instances['Sozlesme_ACIKLAMA'];
+        if (editor) {editor.destroy(true)}
+        CKEDITOR.replace('Sozlesme_ACIKLAMA', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+        CKFinder.SetupCKEditor(null, '@Url.Content("~/assets/ckfinder/")');
+
+    </script>
+
+    <script>
+        document.querySelector('#yayin').onclick = function () {
+            swal("Tebrikler", "İlanınız Yayınlanmıştır", "success")
+        };
+    </script>
+
+}

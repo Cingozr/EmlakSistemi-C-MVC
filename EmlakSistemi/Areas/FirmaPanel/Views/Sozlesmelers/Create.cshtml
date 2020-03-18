@@ -1,0 +1,182 @@
+﻿@model EmlakSistemi.Models.Sozlesmeler
+
+@{
+    Layout = null;
+}
+
+<h2 class="text-center">Yeni Sözleşme Oluştur</h2>
+
+@using (Html.BeginForm("Create", "Sozlesmelers",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Başlık Giriniz</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_BASLIK, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_BASLIK, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Açıklama Giriniz</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_ACIKLAMA, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_ACIKLAMA, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Başlangıç Tarihi</label>
+            <div class="col-md-10">
+                <input type="date" class="form-control"  name="Sozlesme_BASTARIH" value="" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2">Bitiş Tarihi</label>
+            <div class="col-md-10">
+                <input type="date" class="form-control" name="Sozlesme_BITTARIH" value="" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Alıcı Adı</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_KISIAD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_KISIAD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Alıcı Soyadı</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_KISISOYAD, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_KISISOYAD, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Adres Seçiniz</label>
+            @{ Html.RenderAction("AdresListe", "Emlak", new { area =""});}
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Kapı No</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_KAPINO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_KAPINO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Pafta No</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_PAFTANO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_PAFTANO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Ada No</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_ADANO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_ADANO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Parsel No</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Sozlesme_PARSELNO, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Sozlesme_PARSELNO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Sözleşme Türü Seçiniz</label>
+            <div class="col-md-10">
+                @Html.DropDownList("Sozlemetur_ID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Sozlemetur_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" id="yayin" value="Sözleşme Oluştur" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section scripts
+{
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Il_ID").change(function () {
+                var id = $(this).val();
+                var ilceList = $("#Ilce_ID");
+
+                ilceList.empty();
+
+
+                $.ajax({
+                    url: '/Emlak/IlceList',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { 'id': id },
+                    success: function (data) {
+                        $.each(data, function (index, option) {
+                            ilceList.append('<option value=' + option.Value + '> ' + option.Text + ' </option');
+                        });
+                    }
+                });
+                $("#Ilce_ID").change(function () {
+                    var ilceid = $(this).val();
+                    var mahalleList = $("#Mahalle_ID");
+                    mahalleList.empty();
+                    $.ajax({
+                        url: '/Emlak/SemtList',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: { 'id': ilceid },
+                        success: function (data) {
+                            $.each(data, function (index, option) {
+                                mahalleList.append('<option value=' + option.Value + '> ' + option.Text + ' </option');
+                            });
+                        }
+                    });
+                });
+
+            });
+        });
+    </script>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/assets/ckfinder/ckfinder.js"></script>
+<script src="~/assets/ckeditor/ckeditor.js"></script>
+<script type="text/javascript">
+    var editor = CKEDITOR.instances['Sozlesme_ACIKLAMA'];
+        if (editor) {editor.destroy(true)}
+        CKEDITOR.replace('Sozlesme_ACIKLAMA', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+        CKFinder.SetupCKEditor(null, '@Url.Content("~/assets/ckfinder/")');
+
+</script>
+
+<script>
+        document.querySelector('#yayin').onclick = function () {
+            swal("Hayırlı Olsun", "Sözleşme Başarıyla Oluşturuldu", "success")
+        };
+</script>
+
+}

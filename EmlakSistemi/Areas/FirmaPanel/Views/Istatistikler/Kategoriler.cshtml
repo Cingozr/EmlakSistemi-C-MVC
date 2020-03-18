@@ -1,0 +1,37 @@
+﻿@model List<EmlakSistemi.Models.Ilanlar>
+@{
+    ViewBag.Title = "Kategoriler";
+    Layout = "~/Areas/FirmaPanel/Views/Shared/_FirmaPanel.cshtml";
+}
+
+@section head{
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+<script type="text/javascript">
+
+    google.load("visualization", "1", { packages: ["corechart"] });
+    google.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        // Create and populate the data table.
+        var sehir = [@Model.Mahalle_ID];
+        var konut = [@Model.AnaKategori.AnaKategori_AD];
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', '@Model.Mahalle_ID');
+        data.addColumn('string', '@Model.AnaKategori_ID');
+        for (i = 0; i < sehir.length; i++) {
+            data.addRow([sehir[i].toString(), konut[i]]);
+        }
+        var options = {
+            title: 'Sale and Purchase Compare',
+            hAxis: { title: '@Model.Mahalle.ilceler.Ilce_AD', titleTextStyle: { color: 'red' } }
+        };
+
+        var chart = newgoogle.visualization.ColumnChart(document.getElementById('chartdiv'));
+        chart.draw(data, options);
+    }
+</script>
+    }
+<div id="chartdiv" style="width: 500px; height: 300px;">
+</div>
+

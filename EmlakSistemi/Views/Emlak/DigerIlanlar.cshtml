@@ -1,0 +1,35 @@
+﻿@model IEnumerable<EmlakSistemi.Models.Ilanlar>
+
+@{
+    ViewBag.Title = "DigerIlanlar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="listing-carousel outer">
+    @foreach (var digerilanlar in Model)
+    {
+        <div class="item">
+            <div class="listing-item compact">
+                <a href="#" class="listing-img-container">
+                    <div class="listing-badges">
+                        <span class="featured">@digerilanlar.AnaKategori.AltKategori.Kategoriler.Kategori_AD</span>
+                        <span>For Sale</span>
+                    </div>
+                    <div class="listing-img-content">
+                        <span class="listing-compact-title">Eagle Apartments <i>$275,000</i></span>
+                        <ul class="listing-hidden-content">
+                            <li>Area <span>530 sq ft</span></li>
+                            <li>Rooms <span>3</span></li>
+                            <li>Beds <span>1</span></li>
+                            <li>Baths <span>1</span></li>
+                        </ul>
+                    </div>
+                    <img src="~/images/listing-01.jpg" alt="">
+                </a>
+            </div>
+        </div>
+    }
+    
+
+</div>
+

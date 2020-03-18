@@ -1,0 +1,63 @@
+﻿@model EmlakSistemi.ViewModel.IlanAramaModel
+@{
+    ViewBag.Title = "AnaSayfaArama";
+    Layout = "~/Views/Shared/_DropLayout.cshtml";
+}
+
+@using (Html.BeginForm("IlanlarSonuc", "Emlak", FormMethod.Post))
+{
+    <div class="row with-forms">
+        <!-- Property Type -->
+        <div class="col-md-3">
+            @Html.DropDownListFor(m => m.Kategori_ID, Model.IlkKategori, new { @class = "form-control" })
+        </div>
+        <!-- Status -->
+        <div class="col-md-3">
+            @Html.DropDownListFor(m => m.AltKategori_ID, Model.IkinciKategori, new { @class = "form-control" })
+        </div>
+        <!-- Main Search Input -->
+        <div class="col-md-6">
+            <div class="main-search-input">
+                @Html.TextBoxFor(m => m.Ilan_AD,new {@placeholder="İlan Başlığı Giriniz" })
+                <button class="button"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="announce">
+        Emlak Sisteminde Toplam Kayıtlı İlan Sayısı : <mark class="color">@ViewBag.ToplamIlan</mark> 
+    </div>
+}
+
+
+
+@section scripts
+{
+
+    <script src="~/Scripts/jquery-2.2.0.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Kategori_ID").change(function () {
+                var KatID = $(this).val();
+                var IkinciKatList = $("#AltKategori_ID");
+
+                IkinciKatList.empty();
+
+
+                $.ajax({
+                    url: '/EkSayfalar/AltKatList',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { 'id': KatID },
+                    success: function (data) {
+                        $.each(data, function (index, option) {
+                            IkinciKatList.append('<option value=' + option.Value + '> ' + option.Text + ' </option');
+                        });
+                    }
+                });
+
+            });
+        });
+    </script>
+
+}

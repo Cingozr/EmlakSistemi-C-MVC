@@ -1,0 +1,269 @@
+﻿@model EmlakSistemi.ViewModel.Ilan.IlanEkle
+@{
+    ViewBag.Title = "IlanEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head{
+  <style>
+    
+    </style>
+    
+    }
+
+
+<div id="titlebar" class="submit-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2><i class="fa fa-plus-circle"></i> Yeni İlan Ekleme</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content
+================================================== -->
+<div class="container">
+    <div class="row">
+        <!-- Submit Page -->
+        <div class="col-md-12">
+@using (Html.BeginForm("IlanEkle", "Emlak", FormMethod.Post))
+{
+            <div class="submit-page">
+                <h3>İlan Bilgilerini Aşağıdaki Forma Giriniz</h3>
+                <hr />
+                <div class="notification notice large margin-bottom-55">
+                    <div class="row with-forms">
+                        @{ Html.RenderAction("KategoriListesi", "Emlak");}
+                        <!-- Status -->
+                        
+                    </div>
+                </div>
+                <!-- Section -->
+               
+                <div class="submit-section">
+                    <!-- Title -->
+                    <div class="form">
+                        <h5>İlan Başlığı <i class="tip" data-tip-content="İlan başlığı ürünün genel özelliklerini kısaca anlatmaya yarayan kısımdır. Başlık Yazarken ürünün marka modeline ait kelimeler kullanmanız o ürünün bulunmasını ve ilk anda kolay anlaşılmasını sağlayacaktır "></i></h5>
+                        @Html.TextBoxFor(m => m.Ilan_AD)
+                    </div>
+                    <div class="form">
+                        <h5>Açıklama <i class="tip" data-tip-content="İlan açıklaması yazarken ilanın her türlü özelliğinden olabildiğince bahsediniz. İlanla ilgili şartları belirtiniz. HTML builder ile yazılarınız renklendirebilirsiniz"></i></h5>
+                        
+                        @Html.TextAreaFor(m => m.Ilan_ACIKLAMA)
+                    </div>
+
+                    <div class="row with-forms">
+                        <!-- Price -->
+                        <div class="col-md-4">
+                            <h5>Fiyat <i class="tip" data-tip-content="Type overall or monthly price if property is for rent"></i></h5>
+                            <div class="select-input disabled-first-option">
+                                @Html.TextBoxFor(m => m.Ilan_FIYAT, new { @type = "number" })
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <h5>Metre Kare</h5>
+                            <div class="select-input disabled-first-option">
+                                @Html.TextBoxFor(m => m.Ilan_AIDAT, new { @type = "number" })
+                            </div>
+                        </div>
+
+                        <!-- Area -->
+                        <div class="col-md-4">
+                            <h5>Metre Kare</h5>
+                            <div class="select-input disabled-first-option">
+                                @Html.TextBoxFor(m => m.Ilan_METREKARE, new { @type = "number" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row with-forms">
+                        <!-- Status -->
+                        <div class="col-md-6">
+                            <h5><mark class="color">Kullanım Durumu</mark> </h5>
+                            @Html.DropDownList("KullanimDurum_ID", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <!-- Type -->
+                        <div class="col-md-6">
+                            <h5><mark class="color">Isıtma</mark></h5>
+                            @Html.DropDownList("Isıtma_ID", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <hr />
+                    <!-- Row -->
+                    <div class="row with-forms">
+                        <!-- Status -->
+                        <div class="col-md-4">
+                            <h5><mark class="color">Oda Sayısı</mark> </h5>
+                            @Html.DropDownList("Oda_ID", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <!-- Type -->
+                        <div class="col-md-4">
+                            <h5><mark class="color">Bina Yaşı</mark></h5>
+                            @Html.DropDownList("BinaYas_ID", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-4">
+                            <h5><mark class="color">Bulunduğu Kat</mark></h5>
+                            @Html.DropDownList("Kat_ID", null, htmlAttributes: new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+                
+                <div class="row with-forms">
+                    <div class="col-md-12">
+                        <h4 class="headline margin-top-0 margin-bottom-20">Detayli Özellikler</h4>
+                        <!-- Toggles Container -->
+                        <div class="style-5">
+                            <!-- Toggle 1 -->
+                            <div class="toggle-wrap">
+                                <span class="trigger "><a href="#">CEPHE<i class="sl sl-icon-plus"></i></a></span>
+                                <div class="toggle-container">
+                                    <div class="checkboxes amenities-list in-row margin-bottom-20">
+
+                                        @Html.EditorFor(x => x.Cephe)
+
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="toggle-wrap">
+                                <span class="trigger "><a href="#">DIŞ ÖZELLİK<i class="sl sl-icon-plus"></i></a></span>
+                                <div class="toggle-container">
+                                    <div class="checkboxes amenities-list in-row margin-bottom-20">
+
+                                        @Html.EditorFor(x => x.DisOzellik)
+
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="toggle-wrap">
+                                <span class="trigger "><a href="#">İÇ ÖZELLİK<i class="sl sl-icon-plus"></i></a></span>
+                                <div class="toggle-container">
+                                    <div class="checkboxes amenities-list in-row margin-bottom-20">
+
+                                        @Html.EditorFor(x => x.IcOzellik)
+
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="toggle-wrap">
+                                <span class="trigger "><a href="#">ENGELLİ UYGUNLUK<i class="sl sl-icon-plus"></i></a></span>
+                                <div class="toggle-container">
+                                    <div class="checkboxes amenities-list in-row margin-bottom-20">
+
+                                        @Html.EditorFor(x => x.Engelli)
+
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="toggle-wrap">
+                                <span class="trigger "><a href="#">MUHİT<i class="sl sl-icon-plus"></i></a></span>
+                                <div class="toggle-container">
+                                    <div class="checkboxes amenities-list in-row margin-bottom-20">
+
+                                        @Html.EditorFor(x => x.Muhit)
+
+                                    </div>
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="toggle-wrap">
+                                <span class="trigger "><a href="#">ULAŞIM<i class="sl sl-icon-plus"></i></a></span>
+                                <div class="toggle-container">
+                                    <div class="checkboxes amenities-list in-row margin-bottom-20">
+
+                                        @Html.EditorFor(x => x.Ulasim)
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Toggles Container / End -->
+                    </div>
+                </div>
+
+                @*<div class="row with-forms">
+                    <!-- Price -->
+                    <div class="col-md-4">
+                        <h5>Fiyat <i class="tip" data-tip-content="Type overall or monthly price if property is for rent"></i></h5>
+                        <div class="select-input disabled-first-option">
+                            @Html.CheckBoxFor(m => m.Ilan_ESYADURUM.Value==true, new { @type = "number" })
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <h5>Metre Kare</h5>
+                        <div class="select-input disabled-first-option">
+                            @Html.CheckBoxFor(m => m.Ilan_KRKEDIDURUM.Value==false, new { @type = "number" })
+                        </div>
+                    </div>
+
+                    <!-- Area -->
+                    <div class="col-md-4">
+                        <h5>Metre Kare</h5>
+                        <div class="select-input disabled-first-option">
+                            @Html.TextBoxFor(m => m.Vitrin.Value==false, new { @type = "number" })
+                        </div>
+                    </div>
+                </div>*@
+
+
+                
+                <h3>Fotoğraf</h3>
+                <div class="submit-section">
+                    <form action="http://www.vasterad.com/file-upload" class="dropzone"></form>
+                </div>
+                
+                <h3>Adres Bilgileri</h3>
+                <div class="submit-section">
+                   @{ Html.RenderAction("AdresListe", "Emlak");}
+
+
+                </div>
+
+
+                <div class="divider"></div>
+                <input type="submit"class="button preview margin-top-5 name="name" value="İlanı Yayınla" />
+            </div>
+}
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+<script src="~/Scripts/dropzone/dropzone.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCqzRB_0p-bo_bWg1oMfMgMxTQ4pGHbCgk&libraries=places"></script>
+
+        
+<script src="~/js/map-search.js"></script>
+<script src="~/js/map-single.js"></script>
+<script src="~/Scripts/dropzone/dropzone.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/assets/ckfinder/ckfinder.js"></script>
+    <script src="~/assets/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.instances['Ilan_ACIKLAMA'];
+        if (editor) {editor.destroy(true)}
+        CKEDITOR.replace('Ilan_ACIKLAMA', {
+            enterMode: CKEDITOR.ENTER_BR,
+        });
+        CKFinder.SetupCKEditor(null, '@Url.Content("~/assets/ckfinder/")');
+
+    </script>
+
+    <script>
+        document.querySelector('#yayin').onclick = function () {
+            swal("Tebrikler", "İlanınız Yayınlanmıştır", "success")
+        };
+    </script>
+
+    }
+

@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "Roller";
+    Layout = "~/Areas/FirmaPanel/Views/Shared/_FirmaPanel.cshtml";
+}
+
+@model List<string>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Rol Adı</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (string Rol in Model)
+        {
+            <tr>
+                <td>@Rol</td>
+                <td>
+                    <a href="#" class="btn btn-xs btn-danger rolsil" data-roladi="@Rol"><span class="glyphicon glyphicon-trash"></span> Sil</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+

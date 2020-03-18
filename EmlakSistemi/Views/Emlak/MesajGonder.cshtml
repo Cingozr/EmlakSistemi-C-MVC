@@ -1,0 +1,21 @@
+﻿@model EmlakSistemi.Models.Mesaj
+
+@{ 
+    Layout = null;
+}
+
+@using (Html.BeginForm("MesajGonder", "Emlak", FormMethod.Post))
+{
+    <input type="hidden" name="firmaid" value=" " />
+    @Html.TextBoxFor(m=>m.Mesaj_BASLIK,new { @class="form-control", @placeholder = "Başlık" })
+   
+    @Html.TextBoxFor(m => m.Mesaj_AD, new { @class = "form-control" , @placeholder = "Adınız" })
+   
+    @Html.TextBoxFor(m => m.Mesaj_SOYAD, new { @class = "form-control", @placeholder = "Soyadınız" })
+   
+    @Html.TextBoxFor(m => m.Mesaj_TEL, new { @class = "form-control", @placeholder = "Telefon Numaranız" })
+   
+    @Html.TextAreaFor(m => m.Mesaj_ACIKLAMA, new { @class = "form-control", @placeholder = "Açıklama" })
+    <button type="submit" class="button fullwidth margin-top-5">Mesaj Gönder</button>
+
+}

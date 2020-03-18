@@ -1,0 +1,129 @@
+﻿<div class="sidebar" data-background-color="gray">
+    <div class="logo">
+        <a href="#" class="simple-text">
+            @User.Identity.Name.ToUpper()
+        </a>
+    </div>
+    <div class="logo logo-mini">
+        <a href="#" class="simple-text">
+            T
+        </a>
+    </div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li>
+                <a target="_blank" href="@Url.Content("/Anasayfa/")">
+                    <i class="material-icons">trending_flat</i>
+                    <p>Siteyi Görüntüle</p>
+                </a>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Anasayfa")">
+                    <i class="material-icons">dashboard</i>
+                    <p>Anasayfa</p>
+                </a>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#ui-elements" class="collapsed" aria-expanded="false">
+                    <i class="material-icons">border_color</i>
+                    <p>
+                        İLANLAR
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="ui-elements" aria-expanded="false" style="height: 0px;">
+                    <ul class="nav">
+                        <li><a href="@Url.Action("Tumilanlar","Anasayfa")">Tüm İlanlar</a></li>
+                        <li><a href="ui/alerts.html">Aktif İlanlar</a></li>
+                        <li><a href="ui/buttons.html">Pasif İlanlar</a></li>
+                        <li><a href="ui/colors.html">Kiralanan İlanlar</a></li>
+                        <li><a href="ui/grid.html">Satılan İlanlar</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="@Url.Action("Index","Sozlesmelers")">
+                    <i class="material-icons">receipt</i>
+                    <p>SÖZLEŞMELER</p>
+                </a>
+            </li>
+            <li>
+                @if (User.IsInRole("Admin"))
+                {
+                <a href="@Url.Action("Index", "Istatistikler")">
+                    <i class="material-icons">equalizer</i>
+                    <p> İSTATİSTİKLER</p>
+                </a>
+                }
+            </li>
+            <li>
+                <a href="@Url.Action("Mesajlar","Anasayfa")">
+                    <i class="material-icons">announcement</i>
+                    <p>MESAJLAR</p>
+                </a>
+            </li>
+            <li>
+                <a data-toggle="collapse" href="#ajanda" class="collapsed" aria-expanded="false">
+                    <i class="material-icons">date_range</i>
+                    <p>
+                        AJANDA
+                        <b class="caret"></b>
+                    </p>
+                </a>
+                <div class="collapse" id="ajanda" aria-expanded="false" style="height: 0px;">
+                    <ul class="nav">
+                        <li><a href="@Url.Action("Randevu","Ajanda")">Randevular</a></li>
+                        <li><a href="@Url.Action("Mesajlar","Anasayfa")">Hatırlatmalar</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <a href="@Url.Action("FirmaProfil","Anasayfa")">
+                    <i class="material-icons">build</i>
+                    <p>FİRMA AYARLARI</p>
+                </a>
+            </li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li>
+                    <a data-toggle="collapse" href="#firmaayari" class="collapsed" aria-expanded="false">
+                        <i class="material-icons">perm_data_setting</i>
+                        <p>
+                            FİRMA YÖNETİMİ
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse" id="firmaayari" aria-expanded="false" style="height: 0px;">
+                        <ul class="nav">
+                            <li><a href="@Url.Action("TumFirmalar","Anasayfa")">Tüm Firmalar</a></li>
+                            <li><a href="@Url.Action("Roller","Anasayfa")">Tüm Roller</a></li>
+                            <li><a href="@Url.Action("RolEkle","Anasayfa")">Rol Ekle</a></li>
+                            <li><a href="@Url.Action("RolAta","Anasayfa")">Rol Ata</a></li>
+                        </ul>
+                    </div>
+                </li>
+            }
+
+            @if (User.IsInRole("Admin"))
+            {
+                <li>
+                    <a data-toggle="collapse" href="#ilanozellik" class="collapsed" aria-expanded="false">
+                        <i class="material-icons">perm_data_setting</i>
+                        <p>
+                            İLAN ÖZELLİKLER
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse" id="ilanozellik" aria-expanded="false" style="height: 0px;">
+                        <ul class="nav">
+                            <li><a href="@Url.Action("Index","Ozellikler")">Tüm Özellikler</a></li>
+                        </ul>
+                    </div>
+                </li>
+            }
+
+            
+
+        </ul>
+    </div>
+</div>

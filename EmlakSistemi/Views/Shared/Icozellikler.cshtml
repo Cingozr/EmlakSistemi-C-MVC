@@ -1,0 +1,21 @@
+﻿@model List<EmlakSistemi.Models.IcOzellik>
+
+@{
+    Layout = null;
+}
+
+@{ 
+    var goruntuleme = "";
+
+    for (int i = 0; i < Model.Count; i++)
+    {
+       goruntuleme += Model[i].IcOzellik_AD + "  ";
+    }
+    if (goruntuleme.Contains(","))
+    {
+        goruntuleme = goruntuleme.Remove(goruntuleme.LastIndexOf(","));
+    }
+}
+<span>@goruntuleme</span>
+
+

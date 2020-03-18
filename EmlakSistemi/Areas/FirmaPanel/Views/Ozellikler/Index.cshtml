@@ -1,0 +1,857 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/FirmaPanel/Views/Shared/_FirmaPanel.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-content">
+                <h4 class="card-title">Isıtma Bilgisi</h4>
+                <div class="table-responsive material-datatables ">
+                    <table id="isitma" class="table table-bordered">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th>AD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Isitma in ViewBag.Isitma)
+                            {
+                                <tr>
+                                    <td>@Isitma.Isıtma_ID</td>
+                                    <td>@Isitma.Isıtma_AD</td>                                    
+                                </tr>
+                            }
+                            
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".isitma">Isıtma Ekle</button>
+                  
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-content">
+                <h4 class="card-title">Kat Bilgisi</h4>
+                <div class="table-responsive material-datatables ">
+                    <table id="kat" class="table table-bordered">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th>Sıra</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Kat in ViewBag.Kat)
+                            {
+                                <tr>
+                                    <td>@Kat.Kat_ID</td>
+                                    <td>@Kat.Kat_AD</td>
+                                </tr>
+                            }
+                           
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".Kat">Kat Bilgisi Ekle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-content">
+                <h4 class="card-title">Oda Sayısı Bilgisi</h4>
+                <div class="table-responsive material-datatables ">
+                    <table id="oda" class="table table-bordered">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th>Oda Sayısı</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Oda in ViewBag.Oda)
+                            {
+                                <tr>
+                                    <td>@Oda.Oda_ID</td>
+                                    <td>@Oda.Oda_AD</td>
+                                </tr>
+                            }
+                            
+                        </tbody>
+                    </table>
+
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".Oda">Oda Sayısı Ekle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-content">
+                <h4 class="card-title">Bina Yaşı</h4>
+                <div class="table-responsive material-datatables ">
+                    <table id="yas" class="table table-bordered">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>Yaş ID</th>
+                                <th>Yaş Ad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Yas in ViewBag.Yas)
+                            {
+                                <tr>
+                                    <td>@Yas.BinaYas_ID</td>
+                                    <td>@Yas.BinaYas_AD</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target=".Bina">Bina Yaşı Ekle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+            <div class="card">
+                <div class="card-content">
+                    <h4 class="card-title">Cephe Bilgisi</h4>
+                    <div class="table-responsive material-datatables ">
+                        <table id="cephe" class="table table-bordered">
+                            <thead class="text-primary">
+                                <tr>
+                                    <th>Cephe ID</th>
+                                    <th>Cephe Ad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var Cephe in ViewBag.Cephe)
+                                {
+                                    <tr>
+                                        <td>@Cephe.Cephe_ID</td>
+                                        <td>@Cephe.Cephe_AD</td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-content">
+                <h4 class="card-title">Dış Özellik Bilgisi</h4>
+                <div class="table-responsive material-datatables ">
+                    <table id="Dis" class="table table-bordered">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>Dış Özellik ID</th>
+                                <th>Dış Özellik AD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Dis in ViewBag.DisOzellik)
+                            {
+                                <tr>
+                                    <td>@Dis.DisOzellik_ID</td>
+                                    <td>@Dis.DisOzellik_AD</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-content">
+                <h4 class="card-title">İç Özellik Bilgisi</h4>
+                <div class="table-responsive material-datatables ">
+                    <table id="Ic" class="table table-bordered">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>Dış Özellik ID</th>
+                                <th>Dış Özellik AD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Ic in ViewBag.IcOzellik)
+                            {
+                                <tr>
+                                    <td>@Ic.IcOzellik_ID</td>
+                                    <td>@Ic.IcOzellik_AD</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-content">
+                <h4 class="card-title">Engelli Uygunluk Bilgisi</h4>
+                <div class="table-responsive material-datatables ">
+                    <table id="Engelli" class="table table-bordered">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th>AD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Engelli in ViewBag.Engelli)
+                            {
+                                <tr>
+                                    <td>@Engelli.EngelliUygunluk_ID</td>
+                                    <td>@Engelli.EngelliUygunluk_AD</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-content">
+                <h4 class="card-title">Muhit Bilgisi</h4>
+                <div class="table-responsive material-datatables ">
+                    <table id="Muhit" class="table table-bordered">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th>AD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Muhit in ViewBag.Muhit)
+                            {
+                                <tr>
+                                    <td>@Muhit.Muhit_ID</td>
+                                    <td>@Muhit.Muhit_AD</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+    
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-content">
+                <h4 class="card-title">Ulaşım Bilgisi</h4>
+                <div class="table-responsive material-datatables ">
+                    <table id="Ulasim" class="table table-bordered">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th>AD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Ulasim in ViewBag.Ulasim)
+                            {
+                                <tr>
+                                    <td>@Ulasim.Ulasim_ID</td>
+                                    <td>@Ulasim.Ulasim_AD</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-content">
+                <h4 class="card-title">Manzara Bilgisi</h4>
+                <div class="table-responsive material-datatables ">
+                    <table id="Manzara" class="table table-bordered">
+                        <thead class="text-primary">
+                            <tr>
+                                <th>ID</th>
+                                <th>AD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var Manzara in ViewBag.Manzara)
+                            {
+                                <tr>
+                                    <td>@Manzara.Manzara_ID</td>
+                                    <td>@Manzara.Manzara_AD</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="modal fade isitma" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">            
+            <div class="modal-body">
+                @{ 
+                    Html.RenderAction("IsitmaBilgisi", "Ozellikler");
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade Kat " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                @{
+                    Html.RenderAction("KatBilgisi", "Ozellikler");
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade Oda " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                @{
+                    Html.RenderAction("OdaBilgisi", "Ozellikler");
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade Bina " tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                @{
+                    Html.RenderAction("YasBilgisi", "Ozellikler");
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts{
+
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('#isitma').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#isitma').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#kat').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#kat').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#oda').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#oda').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#yas').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#yas').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#cephe').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#cephe').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#Dis').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#Dis').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#Ic').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#Ic').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#Engelli').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#Engelli').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#Muhit').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#Muhit').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#Ulasim').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#Ulasim').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#Manzara').DataTable({
+            "pagingType": "full_numbers",
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            responsive: true,
+            language: {
+                search: "_INPUT_",
+                searchPlaceholder: "Arama Yap",
+            }
+
+        });
+
+
+        var table = $('#Manzara').DataTable();
+
+        // Edit record
+        table.on('click', '.edit', function() {
+            $tr = $(this).closest('tr');
+
+            var data = table.row($tr).data();
+            alert('You press on Row: ' + data[0] + ' ' + data[1] + ' ' + data[2] + '\'s row.');
+        });
+
+        // Delete a record
+        table.on('click', '.remove', function(e) {
+            $tr = $(this).closest('tr');
+            table.row($tr).remove().draw();
+            e.preventDefault();
+        });
+
+        //Like record
+        table.on('click', '.like', function() {
+            alert('You clicked on Like button');
+        });
+
+        $('.card .material-datatables label').addClass('form-group');
+    });
+</script>
+}

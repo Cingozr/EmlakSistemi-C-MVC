@@ -1,0 +1,115 @@
+﻿@using PagedList
+@using PagedList.Mvc
+@using EmlakSistemi.Models
+@model IPagedList<Ilanlar>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section head
+ {
+    
+<link href="~/css/PagedList.css" rel="stylesheet" /> 
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    
+ }
+
+
+<section class="search margin-bottom-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+@using (Html.BeginForm("IlanlarSonuc", "Emlak", FormMethod.Post))
+{
+                <h3 class="search-title">Detaylı Arama</h3>
+                <div class="row with-forms">
+                   @{Html.RenderAction("Arama", "Emlak");}  
+                </div>
+           }            
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row fullwidth-layout">
+        <div class="col-md-12">
+            <!-- Sorting / Layout Switcher -->
+            <div class="row margin-bottom-15">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                    <!-- Layout Switcher -->
+                    <div class="layout-switcher">
+                        <a href="#" class="grid-three"><i class="fa fa-th"></i></a>
+                        <a href="#" class="grid"><i class="fa fa-th-large"></i></a>
+                        <a href="#" class="list"><i class="fa fa-th-list"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Listings -->
+            <div class="listings-container grid-layout-three">
+                <!-- Listing Item -->
+                @foreach (var IlanListe in Model)
+                {
+                    <div class="listing-item">
+                    <a href="single-property-page-1.html" class="listing-img-container">
+                        <div class="listing-badges">
+                            <mark class="colors"></mark>
+                            
+                        </div>
+                        <div class="listing-badges">
+                            <span class="featured">@Html.DisplayFor(modelItem => IlanListe.AnaKategori.AnaKategori_AD)</span>
+                            <span class="colors">@Html.DisplayFor(modelItem => IlanListe.AnaKategori.AltKategori.AltKategori_AD)</span>
+                        </div>
+
+                        <div class="listing-img-content">
+                            <span class="listing-price"><mark class="color">@String.Format("{0:C}", @IlanListe.Ilan_FIYAT)</mark></span>                            
+                        </div>
+                        <div class="listing-carousel">
+                            <div><img src="~/images/listing-01.jpg" alt=""></div>
+                            <div><img src="~/images/listing-01b.jpg" alt=""></div>
+                            <div><img src="~/images/listing-01c.jpg" alt=""></div>
+                        </div>
+                    </a>
+                    <div class="listing-content">
+                        <div class="listing-title">
+                            <h4><a href="@Url.Action("IlanDetay","Emlak")/@IlanListe.Ilan_ID">@IlanListe.Ilan_AD</a></h4>
+                            <i class="fa fa-map-marker"></i>
+                               @Html.DisplayFor(modelItem => IlanListe.Mahalle.ilceler.iller.Il_AD)/@Html.DisplayFor(modelItem => IlanListe.Mahalle.ilceler.Ilce_AD) / @Html.DisplayFor(modelItem => IlanListe.Mahalle.Mahaller_AD)
+                            
+                            <a href="single-property-page-1.html" class="details button border">Detay</a>
+                        </div>
+                        <ul class="listing-details">
+                            <li>M²: @IlanListe.Ilan_METREKARE</li>
+                            <li>Oda: @Html.DisplayFor(modelItem => IlanListe.OdaBilgisi.Oda_AD)</li>
+                            <li>Durum:@Html.DisplayFor(modelItem => IlanListe.DurumBilgisi.KullanimDurum_AD)</li>                            
+                            <li>Tip:@Html.DisplayFor(modelItem => IlanListe.AnaKategori.AnaKategori_AD) </li>
+                            <li>Isıtma:@Html.DisplayFor(modelItem => IlanListe.IsıtmaBilgisi.Isıtma_AD) </li>
+                            <li>Bina Yaşı:@Html.DisplayFor(modelItem => IlanListe.BinaYasBilgisi.BinaYas_AD) </li>
+                        </ul>
+                        <div class="listing-footer">
+                            <a href="#"><i class="fa fa-user"></i> @Html.DisplayFor(modelItem => IlanListe.aspnet_Users.UserName)</a>
+                            <span><i class="fa fa-calendar-o"></i> @Html.DisplayFor(modelItem => IlanListe.Ilan_TARIHI)</span>
+                        </div>                        
+                        
+                    </div>
+                </div>
+                }
+                
+            </div>
+            <div class="clearfix"></div>
+            <div class="pagination-container margin-top-20">
+                <nav class="pagination">
+                    <ul>
+                        <li>@Html.PagedListPager(Model, _SayfaNo => Url.Action("Ilanlar", "Emlak", new { SayfaNo = _SayfaNo }))</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

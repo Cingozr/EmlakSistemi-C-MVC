@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "FirmaAyari";
+    Layout = "~/Areas/FirmaPanel/Views/Shared/_FirmaPanel.cshtml";
+}
+
+
+@using System.Web.Security;
+@model MembershipUserCollection
+
+<div class="container">
+    <h2>Kullanıcılar</h2>
+    <a href="@Url.Action("YeniKullanici","Uye")" class="btn btn-primary btn-success"><span class="glyphicon glyphicon-plus-sign"></span> Yeni Kullanici Ekle</a>
+    <a href="@Url.Action("RolEkle","Rol")" class="btn btn-primary btn-primary"><span class="glyphicon glyphicon-asterisk"></span> Yeni Rol Ekle</a>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Kullanici Adı</th>
+                <th>E-Mail</th>
+                <th>Kayıt Tarihi</th>
+                <th>Son Giriş Tarihi</th>
+
+                <th>Rolü</th>
+                <th>Roller</th>
+                <th>İşlemler</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (MembershipUser Kullanicilar in Model)
+            {
+                <tr>
+                    <td>@Kullanicilar.UserName</td>
+                    <td>@Kullanicilar.Email</td>
+                    <td>@Kullanicilar.CreationDate</td>
+                    <td>@Kullanicilar.LastLoginDate</td>
+                    <td><a class="btn btn-primary roller" data-uyeadi="@Kullanicilar.UserName">Rolleri</a></td>
+                    <td><a href="@Url.Action("RolAta","Rol")" class="btn btn-warning">Rol Ekle</a></td>
+                    <td class="td-actions text-right">
+
+                        <button type="button" rel="tooltip" class="btn btn-success btn-simple" data-original-title="" title="">
+                            <i class="material-icons">edit</i>
+                        </button>
+                        <button type="button" rel="tooltip" class="btn btn-danger btn-simple" data-original-title="" title="">
+                            <i class="material-icons">close</i>
+                        </button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+@section scripts{
+
+
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script>
+        $(".roller").click(function () {
+            var ka = $(this).data("uyeadi");
+
+            $.ajax({
+                type: "POST",
+                url: "/Rol/UyeRolleri",
+                data: { Kullanici_TAMAD: ka },
+                success:function(veri){
+                    alert(veri);
+            }
+            });
+        });
+    </script>
+
+
+}

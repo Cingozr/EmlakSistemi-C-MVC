@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "KayitOl";
+    Layout = "~/Views/Shared/_DropLayout.cshtml";
+}
+
+@section head{
+    <style>
+        #hata {
+            color: red;
+            font-size: 16px;
+        }
+    </style>
+
+
+}
+
+<form action="@Url.Action("KayitOl","Uye")" method="post" class="register">
+    <p class="form-row form-row-wide">
+        <label for="username">
+            Firma Adı:
+            <i class="im im-icon-Male"></i>
+            <input type="text" class="input-text" name="Firma_TAMAD" id="Firma_TAMAD" value="" />
+        </label>
+    </p>
+    <p class="form-row form-row-wide">
+        <label for="username">
+            Firma Parola:
+            <i class="im im-icon-Lock-2"></i>
+            <input type="password" class="input-text" name="Firma_PAROLA" id="Firma_PAROLA" value="" />
+        </label>
+    </p>
+    <p class="form-row form-row-wide">
+        <label for="username">
+            Firma E-Mail:
+            <i class="im im-icon-Mail"></i>
+            <input type="email" class="input-text" name="Firma_EMAIL" id="Firma_EMAIL" value="" />
+        </label>
+    </p>
+
+    <p class="form-row form-row-wide">
+        <label for="Gizli_SORU">
+            Gizli Sorunuz:
+            <i class="im im-icon-Data-Security"></i>
+            <input type="text" class="input-text" name="Gizli_SORU" id="Gizli_SORU" value="" />
+        </label>
+    </p>
+    <p class="form-row form-row-wide">
+        <label for="Gizli_CEVAP">
+            Gizli Sorunuzun Cevabı:
+            <i class="im im-icon-Data-Shield"></i>
+            <input type="text" class="input-text" name="Gizli_CEVAP" id="Gizli_CEVAP" value="" />
+        </label>
+    </p>
+    <p class="form-row">
+        <input type="submit" class="button border fw margin-top-10" name="register" value="Kayıt Ol" />
+    </p>
+</form>
+
+
+<span id="hata">@ViewBag.Mesaj</span>
+

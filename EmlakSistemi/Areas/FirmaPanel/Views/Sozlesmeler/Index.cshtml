@@ -1,0 +1,63 @@
+﻿@model IEnumerable<EmlakSistemi.Models.Sozlesmeler>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/FirmaPanel/Views/Shared/_FirmaPanel.cshtml";
+}
+
+<div class="card">
+    <div class="card-content">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".example-modal-lg">Yeni Sözleşme Yap</button>
+        <a href="#" class="btn btn-primary">Yeni Sözleşme Türü Ekle</a>
+        <a href="#" class="btn btn-danger">Sözleşme Türleri</a>
+        <div class="table-responsive material-datatables ">
+            <table id="Ulasim" class="table table-bordered">
+                <thead class="text-primary">
+                    <tr>
+                        <th>Sözleşme NO</th>
+                        <th>Sözleşme Başlığı</th>
+                        <th>Sözleşme Açıklaması</th>
+                        <th>Başlangıç Tarihi</th>
+                        <th>Bitiş Tarihi</th>
+                        <th>Alıcı</th>
+                        <th>Sözleşme Türü</th>
+                        <th>İşlemler</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Sozlesme in Model)
+                    {
+                        <tr>
+                            <td>@Sozlesme.Sozlesme_NO</td>
+                            <td>@Sozlesme.Sozlesme_BASLIK</td>
+                            <td>@Sozlesme.Sozlesme_ACIKLAMA</td>
+                            <td>@Sozlesme.Sozlesme_BASTARIH</td>
+                            <td>@Sozlesme.Sozlesme_BITTARIH</td>
+                            <td>@Sozlesme.Sozlesme_KISIAD @Sozlesme.Sozlesme_KISISOYAD</td>
+                            <td>@Sozlesme.SozlesmeTuru.Sozlesmetur_AD</td>
+                            <td>
+                                <a href="#" class="btn btn-xs btn-info"><span class="glyphicon glyphicon-eye-open"></span> Gör</a>
+                                <a href="#" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span> Sil</a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">            
+            <div class="modal-body">
+                @{ 
+                    Html.RenderAction("SozlesmeYap", "Sozlesmeler");
+                }
+            </div>
+        </div>
+    </div>
+</div>
